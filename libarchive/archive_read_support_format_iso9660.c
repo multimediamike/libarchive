@@ -1287,6 +1287,7 @@ archive_read_format_iso9660_read_header(struct archive_read *a,
 	/* N.B.: Rock Ridge supports 64-bit device numbers. */
 	archive_entry_set_rdev(entry, (dev_t)file->rdev);
 	archive_entry_set_size(entry, iso9660->entry_bytes_remaining);
+	archive_entry_set_ino64(entry, (la_int64_t)file->offset);
 	if (file->symlink.s != NULL)
 		archive_entry_copy_symlink(entry, file->symlink.s);
 
